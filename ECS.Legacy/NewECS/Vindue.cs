@@ -12,12 +12,12 @@ namespace ECS.NewECS
 
         public void Open()
         {
-            Console.WriteLine("Opening Window");
+            Console.WriteLine("Window is Open");
             State = true;
         }
         public void Close()
         {
-            Console.WriteLine("Closing Window");
+            Console.WriteLine("Window is Closed");
             State = false;
         }
 

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ECS.Legacy
+namespace ECS.NewECS
 {
     interface IHeater
     { 
@@ -21,5 +21,13 @@ namespace ECS.Legacy
     interface ITester
     {
         bool RunSelfTest();
+    }
+
+    interface IGui
+    {
+        void OpenWindow();
+
+        void CloseWindow();
+
     }
 }

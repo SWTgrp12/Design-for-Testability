@@ -2,7 +2,7 @@
 
 namespace ECS.Legacy
 {
-    internal class TempSensor
+    internal class TempSensor: ITempSensor
     {
         private Random gen = new Random();
 
@@ -11,9 +11,5 @@ namespace ECS.Legacy
             return gen.Next(-5, 45);
         }
 
-        public bool RunSelfTest()
-        {
-            return true;
-        }
     }
 }

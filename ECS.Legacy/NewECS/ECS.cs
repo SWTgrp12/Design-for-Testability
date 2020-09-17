@@ -37,10 +37,11 @@
         {
             return _tempSensor.GetTemp();
         }
-
+        /* needs changing
         public bool RunSelfTest()
         {
             return _tempSensor.RunSelfTest() && _heater.RunSelfTest();
         }
+        */
     }
 }

@@ -6,7 +6,7 @@ using System.Windows;
 
 namespace ECS.NewECS
 {   
-    internal class Vindue : IVindue
+    public class FakeVindue : IVindue
     {
         public bool State { get; private set; } = false;
 

@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "NewECS": {
+      "commandName": "Project",
+      "commandLineArgs": "10 20"
+    }
+  }
+}

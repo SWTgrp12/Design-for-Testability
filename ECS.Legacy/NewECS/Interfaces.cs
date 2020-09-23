@@ -23,11 +23,13 @@ namespace ECS.NewECS
         bool RunSelfTest();
     }
 
-    interface IGui
+    interface IVindue
     {
-        void OpenWindow();
+        void Open();
 
-        void CloseWindow();
+        void Close();
+
+        bool State { get;}
 
     }
 }

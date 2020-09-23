@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace ECS.NewECS
 {
-    interface IHeater
+    public interface IHeater
     { 
         void TurnOn();
 
         void TurnOff();
     }
 
-    interface ITempSensor
+    public interface ITempSensor
     {
         int GetTemp();
     }

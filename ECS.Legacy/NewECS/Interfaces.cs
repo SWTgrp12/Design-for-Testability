@@ -11,6 +11,8 @@ namespace ECS.NewECS
         void TurnOn();
 
         void TurnOff();
+
+        bool State { get; }
     }
 
     public interface ITempSensor

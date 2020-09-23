@@ -5,35 +5,38 @@ namespace ECS.NewECS
     {
         private int _threshold;
         private int _thresholdVindue;
-        private readonly TempSensor _tempSensor;
-        private readonly Heater _heater;
-        private readonly Vindue _vindue;
+        private readonly ITempSensor _tempSensor;
+        private readonly IHeater _heater;
+        private readonly IVindue _vindue;
 
-        public ECS(int thr, int thr2)
+        public ECS(int thr, int thr2, IHeater a, ITempSensor b, IVindue c)
         {
             SetThresholdVindue(thr2);
             SetThreshold(thr);
-            _tempSensor = new TempSensor();
-            _heater = new Heater();
-            _vindue = new Vindue();
+            _tempSensor = b;
+            _heater = a;
+            _vindue = c;
         }
 
         public void Regulate()
         {
             var t = _tempSensor.GetTemp();
-            if (t < _threshold)
+            if (t < _threshold){
                 _heater.TurnOn();
-            else
+                _vindue.Close();
+            }
+            else if(t > _threshold)
             {
                 _heater.TurnOff();
-                // Siden Heater ikke har en state variabel, kan vindue kun åbnes, hvis heater er blevet slukket
-                if (t > _thresholdVindue)
-                    _vindue.Open();
+                _vindue.Open();
             }
-            // men Vindue kan lukkes uanset om heater er tændt eller ej.
-            // Kunne ikke se en smartere måde uden at tilføje en variabel til hear
-            if (t < _thresholdVindue)
-                _vindue.Close();
+
+            else
+            {
+                // do nothing
+            }
+            
+               
 
         }
 

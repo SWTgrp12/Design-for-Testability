@@ -10,9 +10,33 @@ namespace ECS.NewECS.Tests
         [SetUp]
         public void Setup()
         {
+            _uut = new Vindue();
+        }
+
+        [Test]
+        public void Startup()
+        {
+
+            Assert.That(_uut.State, Is.False);
 
         }
 
+        [Test]
+        public void Open()
+        {
+            _uut.Open();
+            Assert.That(_uut.State, Is.True);
+
+        }
+        [Test]
+        public void Close()
+        {
+            _uut.Open();
+            Assert.That(_uut.State, Is.True);
+            _uut.Close();
+            Assert.That(_uut.State, Is.False);
+
+        }
 
     }
 }

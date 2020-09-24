@@ -14,7 +14,7 @@ namespace ECS.NewECS
             int thr_vindue = Int32.Parse(args[1]);
 
 
-            var ecs = new ECS(thr_heater, thr_vindue);
+            var ecs = new ECS_Main(thr_heater, thr_vindue, new Heater(), new TempSensor(), new Vindue());
 
             // fyrede lige et loop ind for at se om ting ændrede sig som de skulle
             while (true)

@@ -9,7 +9,7 @@ namespace ECS.NewECS
         private readonly IHeater _heater;
         private readonly IVindue _vindue;
 
-        public ECS(int thr, int thr2, IHeater a, ITempSensor b, IVindue c)
+        public ECS_Main(int thr, int thr2, IHeater a, ITempSensor b, IVindue c)
         {
             SetThresholdVindue(thr2);
             SetThreshold(thr);
@@ -66,11 +66,6 @@ namespace ECS.NewECS
         }
 
 
-        /* needs changing
-        public bool RunSelfTest()
-        {
-            return _tempSensor.RunSelfTest() && _heater.RunSelfTest();
-        }
-        */
+       
     }
 }

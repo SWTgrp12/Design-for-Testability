@@ -20,12 +20,12 @@ namespace ECS.NewECS
         int GetTemp();
     }
 
-    interface ITester
+    public interface ITester
     {
         bool RunSelfTest();
     }
 
-    interface IVindue
+    public interface IVindue
     {
         void Open();
 

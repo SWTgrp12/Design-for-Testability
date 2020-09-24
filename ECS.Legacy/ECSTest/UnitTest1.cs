@@ -91,7 +91,7 @@ namespace ECSTest
 
             var ecs = new ECS_Main(24, 30, a, b, c);
 
-            Assert.That(a.State(),Is.EqualTo(true));
+            Assert.That(a.State,Is.EqualTo(true));
 
         }
 
@@ -106,7 +106,7 @@ namespace ECSTest
 
             var ecs = new ECS_Main(24, 30, a, b, c);
 
-            Assert.That(c.State(), Is.EqualTo(false));
+            Assert.That(c.State, Is.EqualTo(false));
 
         }
     }

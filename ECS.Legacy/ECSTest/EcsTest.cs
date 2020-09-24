@@ -1,112 +1,71 @@
 using NUnit.Framework;
-using ECS.NewECS;
 
-namespace ECSTest
+
+namespace ECS.NewECS.Tests
 {
-    public class Tests
+    [TestFixture]
+    public class Ecs_Test
     {
+        private IHeater _heater;
+        private ITempSensor _tempsensor;
+        private IVindue _vindue;
+
+        private ECS_Main _uut;
+
         [SetUp]
         public void Setup()
         {
-
+            // modules used by unit
+            var _heater = new FakeHeater();
+            var _tempsensor = new FakeTempSensor();
+            var _vindue = new FakeVindue();
+            //
+            _uut = new ECS_Main(28, 30, _heater, _tempsensor, _vindue);
         }
 
         [Test]
         public void ECSThreshold_Constructor_thres()
         {
-            var a = new FakeHeater();
 
-            var b = new FakeTempSensor();
-
-            var c = new FakeVindue();
-
-
-            var ecs = new ECS_Main(28,30,a,b,c);
-
-            Assert.That(ecs.GetThreshold(),Is.EqualTo(28));
+            Assert.That(_uut.GetThreshold(),Is.EqualTo(28));
 
         }
 
         [Test]
         public void ECSThreshold_Constructor_vinthres()
         {
-            var a = new FakeHeater();
-
-            var b = new FakeTempSensor();
-
-            var c = new FakeVindue();
-
-
-            var ecs = new ECS_Main(28, 30, a, b, c);
-
-            Assert.That(ecs.GetThresholdVindue(), Is.EqualTo(28));
+            Assert.That(_uut.GetThresholdVindue(), Is.EqualTo(28));
 
         }
 
         [Test]
         public void ECSThreshold_SetMethod()
         {
-            var a = new FakeHeater();
+            _uut.SetThreshold(5);
 
-            var b = new FakeTempSensor();
-
-            var c = new FakeVindue();
-
-
-            var ecs = new ECS_Main(28, 30, a, b, c);
-
-            ecs.SetThreshold(5);
-
-            Assert.That(ecs.GetThreshold(), Is.EqualTo(5));
+            Assert.That(_uut.GetThreshold(), Is.EqualTo(5));
 
         }
 
         [Test]
         public void ECSThreshold_SetMethod_vindue()
         {
-            var a = new FakeHeater();
+            _uut.SetThresholdVindue(32);
 
-            var b = new FakeTempSensor();
-
-            var c = new FakeVindue();
-
-
-            var ecs = new ECS_Main(28, 30, a, b, c);
-
-            ecs.SetThresholdVindue(32);
-
-            Assert.That(ecs.GetThreshold(), Is.EqualTo(32));
+            Assert.That(_uut.GetThreshold(), Is.EqualTo(32));
 
         }
 
         [Test]
         public void ECSRegulateHeat()
         {
-            var a = new FakeHeater();
-
-            var b = new FakeTempSensor();
-
-            var c = new FakeVindue();
-
-
-            var ecs = new ECS_Main(24, 30, a, b, c);
-
-            Assert.That(a.State,Is.EqualTo(true));
+            Assert.That(_heater.State,Is.EqualTo(true));
 
         }
 
         public void ECSRegulatevindue()
         {
-            var a = new FakeHeater();
-
-            var b = new FakeTempSensor();
-
-            var c = new FakeVindue();
-
-
-            var ecs = new ECS_Main(24, 30, a, b, c);
-
-            Assert.That(c.State, Is.EqualTo(false));
+            Assert.That(_vindue.State, Is.EqualTo(false));
 
         }
     }

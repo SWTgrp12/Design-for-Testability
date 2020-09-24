@@ -9,6 +9,9 @@ namespace ECS.NewECS
         private readonly IHeater _heater;
         private readonly IVindue _vindue;
 
+        /// <summary>
+        /// Insert HeaterThreshold, VindueThreshold, og objects Heater, Tempsensor, Vindue.
+        /// </summary>
         public ECS_Main(int thr, int thr2, IHeater a, ITempSensor b, IVindue c)
         {
             SetThresholdVindue(thr2);

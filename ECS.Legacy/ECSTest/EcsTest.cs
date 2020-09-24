@@ -34,7 +34,7 @@ namespace ECS.NewECS.Tests
         [Test]
         public void ECSThreshold_Constructor_vinthres()
         {
-            Assert.That(_uut.GetThresholdVindue(), Is.EqualTo(28));
+            Assert.That(_uut.GetThresholdVindue(), Is.EqualTo(30));
 
         }
 

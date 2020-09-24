@@ -1,7 +1,7 @@
 using NUnit.Framework;
 using NSubstitute;
 
-namespace ECS.NewECS.Tests
+namespace ECS.NewECS.TestsSubstitute
 {
     [TestFixture]
     public class Ecs_Test_Nsubs
@@ -23,11 +23,13 @@ namespace ECS.NewECS.Tests
             _uut = new ECS_Main(28, 30, _heater, _tempsensor, _vindue);
         }
 
+        /*
         [Test]
         public void ECSRegulatevindue()
         {
             _heater.State.Returns(false);
             _uut.Regulate();
         }
+        */
     }
 }

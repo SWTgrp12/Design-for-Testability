@@ -3,29 +3,33 @@ namespace ECS.NewECS
 {
     public class ECS_Main
     {
-        private int _threshold;
-        private int _thresholdVindue;
-        private readonly ITempSensor _tempSensor;
+        public int _thresholdHeater { get; private set; }
+        public int _thresholdVindue { get; private set; }
         private readonly IHeater _heater;
+        private readonly ITempSensor _tempSensor;
         private readonly IVindue _vindue;
 
-        public ECS_Main(int thr, int thr2, IHeater a, ITempSensor b, IVindue c)
+        /// <summary>
+        /// Insert HeaterThreshold, VindueThreshold, og objects Heater, Tempsensor, Vindue.
+        /// </summary>
+        public ECS_Main(int thresholdHeater, int thresholdVindue, IHeater heater, ITempSensor tempSensor, IVindue vindue)
         {
-            SetThresholdVindue(thr2);
-            SetThreshold(thr);
-            _tempSensor = b;
-            _heater = a;
-            _vindue = c;
+            SetThresholdVindue(thresholdVindue);
+            SetThresholdHeater(thresholdHeater);
+            _heater = heater;
+            _tempSensor = tempSensor;
+            _vindue = vindue;
         }
 
         public void Regulate()
         {
             var t = _tempSensor.GetTemp();
-            if (t < _threshold){
+            if (t < _thresholdHeater)
+            {
                 _heater.TurnOn();
                 _vindue.Close();
             }
-            else if(t > _threshold)
+            else if(t > _thresholdHeater)
             {
                 _heater.TurnOff();
                 _vindue.Open();
@@ -40,32 +44,19 @@ namespace ECS.NewECS
 
         }
 
-        public void SetThreshold(int thr)
+        public void SetThresholdHeater(int thr)
         {
             if (thr < _thresholdVindue)
-                _threshold = thr;
+                _thresholdHeater = thr;
             else
                 System.Console.WriteLine("Heater threshold must be lower than Window threshold");
         }
-
-        public int GetThreshold()
-        {
-            return _threshold;
-        }
         public void SetThresholdVindue(int thr)
         {
-            if (thr > _threshold)
+            if (thr >= _thresholdHeater)
                 _thresholdVindue = thr;
             else
                 System.Console.WriteLine("Window threshold must be higher than heater threshold");
         }
-
-        public int GetThresholdVindue()
-        {
-            return _thresholdVindue;
-        }
-
-
-       
     }
 }

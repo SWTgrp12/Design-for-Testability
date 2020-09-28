@@ -15,58 +15,55 @@ namespace ECS.NewECS.Tests
         [SetUp]
         public void Setup()
         {
-            // modules used by unit
-            var _heater = new FakeHeater();
-            var _tempsensor = new FakeTempSensor();
-            var _vindue = new FakeVindue();
+            //Startup test Values for ECS constructor 
+            int threshold_Heater = 28;
+            int threshold_Vindue = 30;
+
+            // modules used by ECS
+            _heater = new FakeHeater();
+            _tempsensor = new FakeTempSensor();
+            _vindue = new FakeVindue();
             //
-            _uut = new ECS_Main(28, 30, _heater, _tempsensor, _vindue);
+            _uut = new ECS_Main(threshold_Heater, threshold_Vindue, _heater, _tempsensor, _vindue);
         }
 
         [Test]
-        public void ECSThreshold_Constructor_thres()
+        public void Constructor_Heater()
         {
-
-            Assert.That(_uut.GetThreshold(),Is.EqualTo(28));
-
+            Assert.That(_uut._thresholdHeater, Is.EqualTo(28));
         }
 
         [Test]
-        public void ECSThreshold_Constructor_vinthres()
+        public void Constructor_Vindue()
         {
-            Assert.That(_uut.GetThresholdVindue(), Is.EqualTo(28));
-
+            Assert.That(_uut._thresholdVindue, Is.EqualTo(30));
         }
 
         [Test]
-        public void ECSThreshold_SetMethod()
+        public void ECS_HeaterThreshold_SetMethod()
         {
-            _uut.SetThreshold(5);
+            _uut.SetThresholdHeater(5);
 
-            Assert.That(_uut.GetThreshold(), Is.EqualTo(5));
-
+            Assert.That(_uut._thresholdHeater, Is.EqualTo(5));
         }
 
         [Test]
-        public void ECSThreshold_SetMethod_vindue()
+        public void ECS_VindueThreshold_SetMethod()
         {
             _uut.SetThresholdVindue(32);
 
-            Assert.That(_uut.GetThreshold(), Is.EqualTo(32));
-
+            Assert.That(_uut._thresholdVindue, Is.EqualTo(32));
         }
 
         [Test]
         public void ECSRegulateHeat()
         {
-            Assert.That(_heater.State,Is.EqualTo(true));
-
+            Assert.That(_heater.State, Is.False);
         }
 
         public void ECSRegulatevindue()
         {
-            Assert.That(_vindue.State, Is.EqualTo(false));
-
+            Assert.That(_vindue.State, Is.False);
         }
     }
 }

@@ -1,6 +1,6 @@
 using NUnit.Framework;
 
-namespace ECS.NewECS.Tests
+namespace ECS.NewECS.Tests.vindue
 {
     [TestFixture]
     public class Vindue_Test

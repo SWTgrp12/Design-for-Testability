@@ -60,10 +60,13 @@ namespace ECS.NewECS.Tests
         {
             Assert.That(_heater.State, Is.False);
         }
-
+        [Test]
         public void ECSRegulatevindue()
         {
             Assert.That(_vindue.State, Is.False);
         }
+
+      
+
     }
 }

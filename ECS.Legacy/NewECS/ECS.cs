@@ -14,8 +14,8 @@ namespace ECS.NewECS
         /// </summary>
         public ECS_Main(int thresholdHeater, int thresholdVindue, IHeater heater, ITempSensor tempSensor, IVindue vindue)
         {
-            SetThresholdVindue(thresholdVindue);
             SetThresholdHeater(thresholdHeater);
+            SetThresholdVindue(thresholdVindue);
             _heater = heater;
             _tempSensor = tempSensor;
             _vindue = vindue;
@@ -46,10 +46,8 @@ namespace ECS.NewECS
 
         public void SetThresholdHeater(int thr)
         {
-            if (thr < _thresholdVindue)
                 _thresholdHeater = thr;
-            else
-                System.Console.WriteLine("Heater threshold must be lower than Window threshold");
+      
         }
         public void SetThresholdVindue(int thr)
         {

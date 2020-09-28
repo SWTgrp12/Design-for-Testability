@@ -26,7 +26,7 @@ namespace ECS.NewECS.Tests
         [Test]
         public void ECSRegulatevindue()
         {
-            _heater.State.Returns(false);
+            _tempsensor.GetTemp().Returns(30);
             _uut.Regulate();
         }
     }

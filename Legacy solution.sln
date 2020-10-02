@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B5CABD59-540F-4FA8-B8A3-17B419172AE8}"
+	ProjectSection(SolutionItems) = preProject
+		dotCoverCoverageConfigCore.xml = dotCoverCoverageConfigCore.xml
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewECS", "ECS.Legacy\NewECS\NewECS.csproj", "{BD3A112D-0378-4AD7-BE6C-836E77B3E3A2}"
 EndProject
